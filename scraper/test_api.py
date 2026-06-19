@@ -1,14 +1,10 @@
 import requests
 
-url = "https://cao.minszw.nl/mozard/!suite16.getObjectRegels"
+session = requests.Session()
 
-params = {
-    "mObjecten": ",37033",
-    "mSelod": "877732"
-}
+start_url = "https://cao.minszw.nl/mozard/!suite16.scherm1168?mSelod=654165"
 
-response = requests.get(url, params=params)
+r = session.get(start_url)
 
-print(response.status_code)
-print(response.headers.get("content-type"))
-print(response.text[:1000])
+print("Status start:", r.status_code)
+print("Cookies:", session.cookies.get_dict())
